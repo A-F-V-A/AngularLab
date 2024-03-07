@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core'
 
+import { Product } from '../../../shared/model/product.model'
+
 @Component({
   selector: 'app-product',
   standalone: true,
@@ -9,14 +11,12 @@ import { Component, Input, Output, EventEmitter } from '@angular/core'
 })
 
 export class ProductComponent {
-  @Input({ required : true}) image:string = ''
-  @Input() title:string = ''
-  @Input() price:string = '0'
 
+  @Input({ required : true}) product!:Product
   @Output() addToCar = new EventEmitter()
 
   addToCartHandler() {
     console.log('click => addToCartHandler')
-    this.addToCar.emit('hola este es un mg desde el componente hijo')
+    this.addToCar.emit(this.product)
   }
 }

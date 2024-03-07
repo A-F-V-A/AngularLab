@@ -1,3 +1,11 @@
-<div class="grid grid-cols-3 gap-8">
-  <app-product title="product 01" image="https://picsum.photos/640/640" price="1.00" (addToCar)="fromChild($event)"/>
+<div class="container mx-auto">
+  <app-header
+    [cart]="cart()"
+  />
+  <div class="grid grid-cols-4 gap-8 mt-2">
+    <app-product
+      *ngFor="let product of products()"
+      [product]="product"
+      (addToCar)="addToCart($event)"/>
+  </div>
 </div>
